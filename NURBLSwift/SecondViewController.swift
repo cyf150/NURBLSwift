@@ -7,9 +7,30 @@
 //
 
 import UIKit
-
+import Alamofire
 class SecondViewController: UIViewController {
 
+    @IBOutlet weak var textview2: UITextView!
+    @IBOutlet weak var textview: UILabel!
+    @IBOutlet weak var intro: UIActivityIndicatorView!
+    @IBAction func find(sender: UIButton) {
+        
+        Alamofire.request(.GET, "http://httpbin.org/get")
+        Alamofire.request(.GET, "http://httpbin.org/get", parameters: ["foo": "bar"])
+            .response { (request, response, data, error) in
+                //println(request)
+               // println(response)
+                //println(error)
+        }
+        Alamofire.request(.GET, "http://www.baidu.com")
+            .responseString { (_, _, string, _) in
+               // println(string)
+                self.textview2.text = string!
+            }
+            .responseJSON { (_, _, JSON, _) in
+                println(JSON)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
