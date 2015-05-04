@@ -12,8 +12,6 @@
 
 #endif
 //#import <MJExtension/MJExtension.h>
-#import <MBProgressHUD/MBProgressHUD.h>
-#import "MJExtension/NSObject+MJCoding.h"
-#import "MJExtension/NSObject+MJProperty.h"
-#import "MJExtension/NSObject+MJKeyValue.h"
+//#import <MBProgressHUD/MBProgressHUD.h>
+
 

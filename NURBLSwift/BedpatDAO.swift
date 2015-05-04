@@ -18,7 +18,7 @@ class BedpatDAO: NSObject {
         var arrays = [Dictionary<String,String>]()
         for i in 1...100
         {
-            var dic = ["PatName":"张三\(i)","PatSex":(i%2==0 ? "男":"女"),"PatAge":"\(i)"]
+            var dic = ["PatName":"张三哈\(i)","PatSex":(i%2==0 ? "男":"女"),"PatAge":"\(i)"]
             arrays.append(dic)
            
         }

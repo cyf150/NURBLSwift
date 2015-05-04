@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		C548B8F4E13B75900F2288D1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F2CE13AEA1BDE04C529C53 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C72A2CEF1AF327D60022E4D3 /* BGTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72A2CEE1AF327D60022E4D3 /* BGTableViewController.swift */; };
+		C72A2CF11AF609430022E4D3 /* HeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72A2CF01AF609420022E4D3 /* HeadView.swift */; };
+		C72A2CF31AF6FD140022E4D3 /* BGCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72A2CF21AF6FD140022E4D3 /* BGCell.swift */; };
 		C75DA66D1ADD41BF00D3D3C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DA66C1ADD41BF00D3D3C7 /* AppDelegate.swift */; };
-		C75DA66F1ADD41BF00D3D3C7 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DA66E1ADD41BF00D3D3C7 /* FirstViewController.swift */; };
+		C75DA66F1ADD41BF00D3D3C7 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DA66E1ADD41BF00D3D3C7 /* MoreViewController.swift */; };
 		C75DA6711ADD41BF00D3D3C7 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DA6701ADD41BF00D3D3C7 /* SecondViewController.swift */; };
 		C75DA6741ADD41BF00D3D3C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C75DA6721ADD41BF00D3D3C7 /* Main.storyboard */; };
 		C75DA6761ADD41BF00D3D3C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C75DA6751ADD41BF00D3D3C7 /* Images.xcassets */; };
@@ -38,10 +41,13 @@
 		12F2CE13AEA1BDE04C529C53 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E1F7D98141A4F76EA8AE5B0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B829F630E910C8D62698A0B7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C72A2CEE1AF327D60022E4D3 /* BGTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BGTableViewController.swift; sourceTree = "<group>"; };
+		C72A2CF01AF609420022E4D3 /* HeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadView.swift; sourceTree = "<group>"; };
+		C72A2CF21AF6FD140022E4D3 /* BGCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BGCell.swift; sourceTree = "<group>"; };
 		C75DA6671ADD41BF00D3D3C7 /* NURBLSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NURBLSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C75DA66B1ADD41BF00D3D3C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C75DA66C1ADD41BF00D3D3C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C75DA66E1ADD41BF00D3D3C7 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		C75DA66E1ADD41BF00D3D3C7 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		C75DA6701ADD41BF00D3D3C7 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		C75DA6731ADD41BF00D3D3C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C75DA6751ADD41BF00D3D3C7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -184,9 +190,10 @@
 		C75DA6C71ADD4DFF00D3D3C7 /* Control */ = {
 			isa = PBXGroup;
 			children = (
-				C75DA66E1ADD41BF00D3D3C7 /* FirstViewController.swift */,
+				C75DA66E1ADD41BF00D3D3C7 /* MoreViewController.swift */,
 				C75DA6701ADD41BF00D3D3C7 /* SecondViewController.swift */,
 				C7F9E0C61AE52A7800007E57 /* BedCollectionViewController.swift */,
+				C72A2CEE1AF327D60022E4D3 /* BGTableViewController.swift */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -195,6 +202,8 @@
 			isa = PBXGroup;
 			children = (
 				C7F9E0CA1AE674D300007E57 /* BedViewCell.swift */,
+				C72A2CF01AF609420022E4D3 /* HeadView.swift */,
+				C72A2CF21AF6FD140022E4D3 /* BGCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -389,12 +398,15 @@
 				C7F9E0C71AE52A7800007E57 /* BedCollectionViewController.swift in Sources */,
 				C7F9E0D91AEBBFD400007E57 /* BedpatDAO.swift in Sources */,
 				C75DA6711ADD41BF00D3D3C7 /* SecondViewController.swift in Sources */,
+				C72A2CF31AF6FD140022E4D3 /* BGCell.swift in Sources */,
 				C7F9E0CF1AE9182B00007E57 /* DataComm.swift in Sources */,
 				C7F9E0D11AE91A4200007E57 /* LogonModel.swift in Sources */,
 				C7F9E0D71AEBBFA700007E57 /* LogonDAO.swift in Sources */,
 				C7F9E0D31AE91C4700007E57 /* BedModel.swift in Sources */,
+				C72A2CEF1AF327D60022E4D3 /* BGTableViewController.swift in Sources */,
 				C75DA66D1ADD41BF00D3D3C7 /* AppDelegate.swift in Sources */,
-				C75DA66F1ADD41BF00D3D3C7 /* FirstViewController.swift in Sources */,
+				C72A2CF11AF609430022E4D3 /* HeadView.swift in Sources */,
+				C75DA66F1ADD41BF00D3D3C7 /* MoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,7 +465,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Feng Hou (J4A46KMKH8)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -498,7 +510,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wei Feng Hou (J4A46KMKH8)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;

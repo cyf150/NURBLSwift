@@ -24,6 +24,7 @@ class BedViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
     }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.NameLable = UILabel(frame: CGRectMake(0, 0, frame.width, 20))
