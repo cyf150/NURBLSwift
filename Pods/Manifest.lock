@@ -1,0 +1,30 @@
+PODS:
+  - Alamofire (1.2.0)
+  - MBProgressHUD (0.9.1)
+  - MJExtension (1.2.1)
+  - MJRefresh (1.4.5)
+  - RDVTabBarController (1.1.9)
+  - SDWebImage (3.7.2):
+    - SDWebImage/Core (= 3.7.2)
+  - SDWebImage/Core (3.7.2)
+  - SnapKit (0.10.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 1.2)
+  - MBProgressHUD
+  - MJExtension
+  - MJRefresh
+  - RDVTabBarController
+  - SDWebImage
+  - SnapKit (~> 0.10.0)
+
+SPEC CHECKSUMS:
+  Alamofire: d765c5c1713aa64106b0228aaa600a1e6851f68d
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  MJExtension: 5e1d1c7504b79417e672df30ffbbbe61a4aa70fe
+  MJRefresh: 4b24394e577ea399fbc926e5b6072317aae2c152
+  RDVTabBarController: 67794f7a7a37f8e32f046f85ac67d06ab92d624a
+  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
+  SnapKit: 53696873f2cf84a15e8d7d0d9729ed4381196b16
+
+COCOAPODS: 0.36.3

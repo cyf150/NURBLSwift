@@ -17,20 +17,13 @@ class BGCell: UITableViewCell {
         
         }
         didSet{
-//            var maxh = CGFloat(0.0)
-//            for (key,val) in data{
-//                if let tmp=model[key as! String]{
-//                    var text = val as! NSString
-//                    var arr = tmp.componentsSeparatedByString("^")
-//                    var size = text.boundingRectWithSize(CGSizeMake(CGFloat(arr[1].toInt()!), 0), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [:], context: NSStringDrawingContext())
-//                    if size.height > maxh
-//                    {
-//                      maxh=size.height
-//                    }
-//                }
-//            }
+            //self.contentView.clearsContextBeforeDrawing=true
+            for obj in self.contentView.subviews{
+               obj.removeFromSuperview()
+            }
             for (key,val) in data{
                 if let tmp=model[key as! String]{
+                    
                     var text = val as! NSString
                     var arr = tmp.componentsSeparatedByString("^")
                     var rect=CGRectMake(CGFloat(arr[0].toInt()!),0,CGFloat(arr[1].toInt()!),cheight)
@@ -56,24 +49,6 @@ class BGCell: UITableViewCell {
             
         }
     }
-//    override func drawRect(rect: CGRect) {
-//        var context = UIGraphicsGetCurrentContext();
-//        CGContextSetLineWidth(context, 1.0);
-//        CGContextSetStrokeColorWithColor(context, UIColor.blackColor().CGColor)
-//        for key in model.keys{
-//            if let tmp = model[key]{
-//                var arr = tmp.componentsSeparatedByString("^")
-//                var rect=CGRectMake(CGFloat(arr[0].toInt()!),0,CGFloat(arr[1].toInt()!),20)
-//                CGContextAddRect(context, rect);
-//                CGContextStrokePath(context);
-//                
-//            }
-//
-//        }
-//        
-//        
-//
-//    }
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         self.data=[:]
         super.init(style:style,reuseIdentifier:reuseIdentifier)

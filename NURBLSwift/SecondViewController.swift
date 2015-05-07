@@ -10,6 +10,11 @@ import UIKit
 import Alamofire
 class SecondViewController: UIViewController {
 
+    @IBAction func click(sender: AnyObject) {
+        var destvc = BGTableViewController()
+        self.showViewController(destvc, sender: nil)
+    }
+    @IBOutlet weak var testclick: UIButton!
     @IBOutlet weak var textview2: UITextView!
     @IBOutlet weak var textview: UILabel!
     @IBOutlet weak var intro: UIActivityIndicatorView!
