@@ -24,14 +24,15 @@ class BGCell: UITableViewCell {
             for (key,val) in data{
                 if let tmp=model[key as! String]{
                     
-                    var text = val as! NSString
+                    var text = "\(val)"
                     var arr = tmp.componentsSeparatedByString("^")
                     var rect=CGRectMake(CGFloat(arr[0].toInt()!),0,CGFloat(arr[1].toInt()!),cheight)
                     var textview = UITextView(frame: rect)
                     textview.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
-                    textview.text = val as? String
+                    textview.text = "\(val)"
                     textview.textAlignment = .Left
                     textview.editable=false
+                    textview.selectable=false
                     textview.layer.borderColor = UIColor.blackColor().CGColor
                     textview.layer.borderWidth = 0.5
                     self.contentView.addSubview(textview)
@@ -42,6 +43,8 @@ class BGCell: UITableViewCell {
                 var arr = value.componentsSeparatedByString("^")
                 var rect=CGRectMake(CGFloat(arr[0].toInt()!),0,CGFloat(arr[1].toInt()!),cheight)
                 var textview = UITextView(frame: rect)
+                textview.editable=false
+                textview.selectable=false
                 textview.layer.borderColor = UIColor.blackColor().CGColor
                 textview.layer.borderWidth = 0.5
                 self.contentView.addSubview(textview)

@@ -18,6 +18,10 @@
 		C75DA6761ADD41BF00D3D3C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C75DA6751ADD41BF00D3D3C7 /* Images.xcassets */; };
 		C75DA6791ADD41BF00D3D3C7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C75DA6771ADD41BF00D3D3C7 /* LaunchScreen.xib */; };
 		C75DA6851ADD41C000D3D3C7 /* NURBLSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DA6841ADD41C000D3D3C7 /* NURBLSwiftTests.swift */; };
+		C77372C61AFB090600D552DC /* AddBGItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77372C51AFB090600D552DC /* AddBGItemVC.swift */; };
+		C7E657781AFCC14A00BB0444 /* FeartureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E657771AFCC14A00BB0444 /* FeartureVC.swift */; };
+		C7E6577A1AFCDD6A00BB0444 /* BLMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E657791AFCDD6A00BB0444 /* BLMainVC.swift */; };
+		C7E6577C1AFF0A2D00BB0444 /* HttpUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6577B1AFF0A2D00BB0444 /* HttpUtil.swift */; };
 		C7F9E0C71AE52A7800007E57 /* BedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F9E0C61AE52A7800007E57 /* BedCollectionViewController.swift */; };
 		C7F9E0CC1AE674D300007E57 /* BedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F9E0CA1AE674D300007E57 /* BedViewCell.swift */; };
 		C7F9E0CF1AE9182B00007E57 /* DataComm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F9E0CE1AE9182B00007E57 /* DataComm.swift */; };
@@ -55,6 +59,10 @@
 		C75DA67E1ADD41C000D3D3C7 /* NURBLSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NURBLSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C75DA6831ADD41C000D3D3C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C75DA6841ADD41C000D3D3C7 /* NURBLSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NURBLSwiftTests.swift; sourceTree = "<group>"; };
+		C77372C51AFB090600D552DC /* AddBGItemVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBGItemVC.swift; sourceTree = "<group>"; };
+		C7E657771AFCC14A00BB0444 /* FeartureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeartureVC.swift; sourceTree = "<group>"; };
+		C7E657791AFCDD6A00BB0444 /* BLMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLMainVC.swift; sourceTree = "<group>"; };
+		C7E6577B1AFF0A2D00BB0444 /* HttpUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpUtil.swift; sourceTree = "<group>"; };
 		C7F9E0C61AE52A7800007E57 /* BedCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BedCollectionViewController.swift; sourceTree = "<group>"; };
 		C7F9E0CA1AE674D300007E57 /* BedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BedViewCell.swift; sourceTree = "<group>"; };
 		C7F9E0CE1AE9182B00007E57 /* DataComm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataComm.swift; sourceTree = "<group>"; };
@@ -194,6 +202,9 @@
 				C75DA6701ADD41BF00D3D3C7 /* SecondViewController.swift */,
 				C7F9E0C61AE52A7800007E57 /* BedCollectionViewController.swift */,
 				C72A2CEE1AF327D60022E4D3 /* BGTableViewController.swift */,
+				C77372C51AFB090600D552DC /* AddBGItemVC.swift */,
+				C7E657771AFCC14A00BB0444 /* FeartureVC.swift */,
+				C7E657791AFCDD6A00BB0444 /* BLMainVC.swift */,
 			);
 			name = Control;
 			sourceTree = "<group>";
@@ -228,6 +239,7 @@
 		C7F9E0D51AEBBF4E00007E57 /* DAO */ = {
 			isa = PBXGroup;
 			children = (
+				C7E6577B1AFF0A2D00BB0444 /* HttpUtil.swift */,
 				C7F9E0D61AEBBFA700007E57 /* LogonDAO.swift */,
 				C7F9E0D81AEBBFD400007E57 /* BedpatDAO.swift */,
 			);
@@ -398,7 +410,10 @@
 				C7F9E0C71AE52A7800007E57 /* BedCollectionViewController.swift in Sources */,
 				C7F9E0D91AEBBFD400007E57 /* BedpatDAO.swift in Sources */,
 				C75DA6711ADD41BF00D3D3C7 /* SecondViewController.swift in Sources */,
+				C7E6577C1AFF0A2D00BB0444 /* HttpUtil.swift in Sources */,
 				C72A2CF31AF6FD140022E4D3 /* BGCell.swift in Sources */,
+				C7E6577A1AFCDD6A00BB0444 /* BLMainVC.swift in Sources */,
+				C7E657781AFCC14A00BB0444 /* FeartureVC.swift in Sources */,
 				C7F9E0CF1AE9182B00007E57 /* DataComm.swift in Sources */,
 				C7F9E0D11AE91A4200007E57 /* LogonModel.swift in Sources */,
 				C7F9E0D71AEBBFA700007E57 /* LogonDAO.swift in Sources */,
@@ -406,6 +421,7 @@
 				C72A2CEF1AF327D60022E4D3 /* BGTableViewController.swift in Sources */,
 				C75DA66D1ADD41BF00D3D3C7 /* AppDelegate.swift in Sources */,
 				C72A2CF11AF609430022E4D3 /* HeadView.swift in Sources */,
+				C77372C61AFB090600D552DC /* AddBGItemVC.swift in Sources */,
 				C75DA66F1ADD41BF00D3D3C7 /* MoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
