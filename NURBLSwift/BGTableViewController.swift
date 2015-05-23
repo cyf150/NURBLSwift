@@ -31,76 +31,27 @@ class BGTableViewController: UIViewController,UITableViewDataSource,UITableViewD
     var ip = ""
     var code = ""
     var adm = ""
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.initBG()
     }
-    //program mark 计算每条记录高度
-    func getheadharr(){
-        headharr = [CGFloat]()
-        for (index,value) in enumerate(datarray){
-            var maxh = CGFloat(0.0)
-           for (key,val) in value{
-              if let tmp=headdic[key as! String]{
-                var text = "\(val)"
-                var arr = tmp.componentsSeparatedByString("^")
-                var size = text.boundingRectWithSize(CGSizeMake(CGFloat(arr[1].toInt()!), 0), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [:], context: NSStringDrawingContext())
-                if size.height > maxh
-                {
-                    maxh=size.height
-                }
-             }
-           }
-           headharr.append(maxh+15)
+    func initBG()
+    {
+        var url = ip+"/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=getcodexml&type=Method"
+        let params=["code":code]
+        let request = Alamofire.request(.GET,url,parameters:params).responseString{
+            (_,_,string,_) in
+            //println(string)
+            let astring = string?.stringByReplacingOccurrencesOfString("\r\n", withString: "", options: nil, range: nil)
+            //let astring = string?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            self.headarray = astring?.componentsSeparatedByString("|")
+            self.headarray?.removeLast()
+            self.initbar()
+            if self.headarray?.count>0{
+                self.showview()
+            }
+            
         }
-    }
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        var wn = size.width>CGFloat(headw) ? size.width:CGFloat(headw)
-        self.myTableView?.frame = CGRectMake(0, 0,wn , size.height-44)
-        self.myscrollview?.frame=CGRectMake(0, 0, size.width, size.height)
-        self.navbar?.frame=CGRectMake(0, 0, size.width, 44)
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-        self.myTableView?.reloadData()
-        //println(self.myTableView?.frame)
-    }
-    func close()
-    {
-       println("4444")
-       self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    func edit()
-    {
-        if myTableView?.editing == true {
-            myTableView?.setEditing(false, animated: true)
-        }else{
-            myTableView?.setEditing(true, animated: true)
-        }
-    }
-    func add(sender:UIBarButtonItem)
-    {
-        var descon =  AddBGItemVC()
-        //descon.data = logoninfo?.LocArray
-        //descon.pVC = self
-       
-        descon.modalPresentationStyle = .Popover
-        let popovercontroller = descon.popoverPresentationController
-        popovercontroller?.barButtonItem = sender        
-        popovercontroller?.permittedArrowDirections = .Any
-        popovercontroller?.delegate = self
-        descon.headmodel=self.headmodel
-        descon.parentobj = self
-        //descon.modalInPopover=true
-        presentViewController(descon, animated: true, completion: nil)
-        println(self.presentedViewController?.presentationController?.frameOfPresentedViewInContainerView())
-    }
-   
-    func search()
-    {
-       
-       
-    }
-    
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle{
-        return UIModalPresentationStyle.None
     }
     func initbar(){
         self.view.backgroundColor=UIColor.whiteColor()
@@ -122,11 +73,11 @@ class BGTableViewController: UIViewController,UITableViewDataSource,UITableViewD
         navbar?.pushNavigationItem(navitm, animated: true)
         self.view.addSubview(navbar!)
         navbar?.setItems([navitm], animated: true)
-
+        
     }
     //加载view
     func initview(){
-               //navbar?.delegate=self
+        //navbar?.delegate=self
         //加载scrollview及tableview
         myHeadView = UIView(frame:CGRectMake(CGFloat(0), CGFloat(0), CGFloat(headw), CGFloat(headh)))
         for str in headarray! {
@@ -136,9 +87,9 @@ class BGTableViewController: UIViewController,UITableViewDataSource,UITableViewD
         contentw = CGFloat(headw)>screenw ? CGFloat(headw):screenw
         myscrollview = UIScrollView(frame: CGRectMake(0, 0, contentw, screenh))
         myscrollview?.backgroundColor = UIColor.lightGrayColor()
-        myscrollview?.pagingEnabled=false
+        myscrollview?.pagingEnabled=true
         myscrollview?.contentSize = CGSizeMake(CGFloat(headw), CGFloat(headh))
-        myscrollview?.bounces=false
+        myscrollview?.bounces=true
         myscrollview?.delegate=self
         myscrollview?.canCancelContentTouches=true
         myTableView = UITableView(frame: CGRectMake(0, 0, contentw, screenh-44), style: UITableViewStyle.Plain)
@@ -154,8 +105,94 @@ class BGTableViewController: UIViewController,UITableViewDataSource,UITableViewD
         self.view.addConstraint(NSLayoutConstraint(item: myscrollview!, attribute: .Bottom   , relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1.0, constant: 0))
         
     }
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        println(scrollView.contentOffset)
+    //加载表头及数据
+    func showview(){
+        self.datarray = []
+        self.gettablewh()
+        self.getheadharr()
+        self.initview()
+        self.myTableView!.registerClass(BGCell.self, forCellReuseIdentifier: self.reuseIdentifier)
+        self.myTableView?.addLegendHeaderWithRefreshingBlock({
+            self.getadmemrcodedata(flag: false)
+        })
+        self.getadmemrcodedata(flag: true)
+        
+    }
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    //program mark 计算每条记录高度
+    func getheadharr(){
+        headharr = [CGFloat]()
+         let testext="测试"
+         var testsize = testext.boundingRectWithSize(CGSizeMake(100, 0), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [:], context: NSStringDrawingContext())
+        for (index,value) in enumerate(datarray){
+            var maxh = CGFloat(0.0)
+           for (key,val) in value{
+              if let tmp=headdic[key as! String]{
+                var text = "\(val)"
+                var arr = tmp.componentsSeparatedByString("^")
+                var size = text.boundingRectWithSize(CGSizeMake(CGFloat(arr[1].toInt()!), 0), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [:], context: NSStringDrawingContext())
+                if size.height > maxh
+                {
+                    maxh=size.height
+                }
+             }
+           }
+            if maxh==testsize.height{
+               maxh*=2
+            }
+           headharr.append(maxh)
+        }
+    }
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        var wn = size.width>CGFloat(headw) ? size.width:CGFloat(headw)
+        self.myTableView?.frame = CGRectMake(0, 0,wn , size.height-44)
+        self.myscrollview?.frame=CGRectMake(0, 0, size.width, size.height)
+        self.navbar?.frame=CGRectMake(0, 0, size.width, 44)
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        self.myTableView?.reloadData()
+        //println(self.myTableView?.frame)
+    }
+    func close()
+    {
+       //println("4444")
+       self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    func edit()
+    {
+        if myTableView?.editing == true {
+            myTableView?.setEditing(false, animated: true)
+        }else{
+            myTableView?.setEditing(true, animated: true)
+        }
+    }
+    func add(sender:UIBarButtonItem)
+    {
+        var descon =  AddBGItemVC()
+        descon.modalPresentationStyle = .Popover
+        let popovercontroller = descon.popoverPresentationController
+        popovercontroller?.barButtonItem = sender        
+        popovercontroller?.permittedArrowDirections = .Any
+        popovercontroller?.delegate = self
+        descon.headmodel=self.headmodel
+        descon.parentobj = self
+        //descon.modalInPopover=true
+        presentViewController(descon, animated: true, completion: nil)
+        println(self.presentedViewController?.presentationController?.frameOfPresentedViewInContainerView())
+    }
+   
+    func search()
+    {
+       
+       
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle{
+        return UIModalPresentationStyle.None
+    }
+       func scrollViewDidScroll(scrollView: UIScrollView) {
+        //println(scrollView.contentOffset)
         if scrollView.contentOffset.x == contentw-screenw{
            myscrollview?.touchesShouldCancelInContentView(myTableView)
         }
@@ -200,47 +237,52 @@ class BGTableViewController: UIViewController,UITableViewDataSource,UITableViewD
         //表头高度
         headh = sortarrh.last!
     }
-    //加载表头及数据
-    func initBG()
-    {
-        var url = ip+"/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=getcodexml&type=Method"
-        let params=["code":code]
-        let request = Alamofire.request(.GET,url,parameters:params).responseString{
-            (_,_,string,_) in
-            println(string)
-            let astring = string?.stringByReplacingOccurrencesOfString("\r\n", withString: "", options: nil, range: nil)
-            //let astring = string?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-            self.headarray = astring?.componentsSeparatedByString("|")
-            self.headarray?.removeLast()
-            self.initbar()
-            if self.headarray?.count>0{
-              self.showview()
-            }
-          
+   
+    //mark:取模板数据
+    func getadmemrcodedata(flag:Bool=false){
+        if flag{
+            MBProgressHUD.showHUDAddedTo(self.view!, animated: true)
         }
-        //debugPrintln(request)
-    }
-    func showview(){
-    
-        self.datarray = [["Item1":"1  录华纳dssddddddddddddddddddddddfeee的顶顶顶顶顶顶顶顶顶","Item2":"100顶顶顶顶顶顶顶顶","CareTime":"12:00"],["Item1":"2  护理看看","Item2":"200","CareTime":"12:44","Item3":"400"],["Item1":"3  护理看看","Item2":"200","CareTime":"12:44","Item3":"400"],["Item1":"4  录华纳dssddddddddddddddddddddddfeee的顶顶顶顶顶顶顶顶顶","Item2":"100顶顶顶顶顶顶顶顶","CareTime":"12:00"],["Item1":"5  护理看看","Item2":"200","CareTime":"12:44","Item3":"400"],["Item1":"6  录华纳dssddddddddddddddddddddddfeee的顶顶顶顶顶顶顶顶顶","Item2":"100顶顶顶顶顶顶顶顶","CareTime":"12:00"],["Item1":"7  护理看看","Item2":"200","CareTime":"12:44","Item3":"400"],["Item1":"8  录华纳dssddddddddddddddddddddddfeee的顶顶顶顶顶顶顶顶顶","Item2":"100顶顶顶顶顶顶顶顶","CareTime":"12:00"],["Item1":"9  护理看看","Item2":"200","CareTime":"12:44","Item3":"400"]]
-        self.gettablewh()
-        self.getheadharr()
-        self.initview()
-        self.myTableView!.registerClass(BGCell.self, forCellReuseIdentifier: self.reuseIdentifier)
-        //self.getdata()
-        self.myTableView?.addLegendHeaderWithRefreshingBlock({
-            self.getdata("Y")
+        var parr=self.adm+"$2015-05-01$00:00$2015-05-25$00:00$"+self.code
+        DataComm().getadmemrcodedata(parr, Hander: {
+            dataresponse in
+            var data = dataresponse.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+            var err=NSErrorPointer()
+            let dic = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves, error: err) as? NSArray
+            if let arr=dic{
+                self.datarray = arr as! [(NSDictionary)]
+                self.getheadharr()
+                self.myTableView?.reloadData()
+            }
+            if flag{
+                MBProgressHUD.hideHUDForView(self.view!, animated: true)
+            }
+            if self.myTableView!.header.isRefreshing(){
+                self.myTableView!.header.endRefreshing()
+            }
         })
-        getdata("N")
 
     }
+    //mark:取某模板的数据
     func getdata(flag:String){
         if flag=="N"{
            MBProgressHUD.showHUDAddedTo(self.myTableView, animated: true)
         }
-        var url = ip+"/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=getadmemrcodedata&type=Method"
-        let params=["Adm":adm,"EmrCode":code]
-        Alamofire.request(.GET, url, parameters: params).responseString{  (_,_,string,_) in
+        var url = ip+"/csp/dhc.nurse.ipad.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=getadmemrcodedata&type=Method"
+        //url = ip+"/dthealth/web/DWR.NurseEmrComm.cls?wsdl"
+        //let params=["Adm":adm,"EmrCode":code]
+        let params = ["parameters":["parameter1":"10024001$2015-05-01$00:00$2015-05-21$00:00$DHCNURXH_CRLNEW"]]
+        var str = NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.allZeros, error: nil)
+        var kkkls=NSString(data: str!, encoding: 4)
+        if let sdd=kkkls{
+          url = url + (sdd as String)
+        }
+        //println(kkkls)
+        //Alamofire.request(.POST, url, parameters: params, encoding: .JSON)
+        Alamofire.request(.GET,url).response{
+           (_,_,string,_) in println(string)
+        }
+        Alamofire.request(.GET, url).responseString{  (_,_,string,_) in
             let astring = string!.stringByReplacingOccurrencesOfString("\r\n", withString: "", options: nil, range: nil) as NSString
             println(astring)
             var data = astring.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
@@ -266,10 +308,7 @@ class BGTableViewController: UIViewController,UITableViewDataSource,UITableViewD
         }
     }
    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.initBG()
-    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datarray.count
     }
@@ -305,7 +344,7 @@ class BGTableViewController: UIViewController,UITableViewDataSource,UITableViewD
         cell.model=self.headdic
         cell.cheight=headharr[indexPath.row]
         cell.data = datarray[indexPath.row]
-        println("\(indexPath.row)" )
+        //println("\(indexPath.row)" )
         return cell
     }
     override func didReceiveMemoryWarning() {

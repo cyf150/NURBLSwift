@@ -13,4 +13,8 @@ class BedModel: NSObject {
     var PatAge:NSString = ""
     var PatSex:NSString = ""
     var PatDiag:NSString = ""
+    var bedCode:NSString = ""
+    var Comm:NSString=""
+    var EpisodeID=""
+    var patRegNo=""
 }

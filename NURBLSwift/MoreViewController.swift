@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class MoreViewController: UIViewController {
+class MoreViewController: UIViewController,UITextFieldDelegate {
 
     
     @IBOutlet weak var LocID: UITextField!
@@ -31,6 +31,11 @@ class MoreViewController: UIViewController {
         presentViewController(alert, animated: true, completion: nil)
         println(defaults.objectForKey("LOC"))
         
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        LocID.resignFirstResponder()
+        IPText.resignFirstResponder()
+        return true
     }
     @IBAction func bgtest(sender: AnyObject) {
         var destvc = BGTableViewController()

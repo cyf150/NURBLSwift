@@ -16,8 +16,8 @@ class BedViewCell: UICollectionViewCell {
     var data:BedModel? {
         didSet {
            self.NameLable?.text = data!.PatName as String
-           self.AgeLable?.text = data!.PatAge as String
-           self.SexLable?.text = data!.PatSex as String
+           self.AgeLable?.text = data!.bedCode as String
+           self.SexLable?.text = data!.Comm as String
         }
      }
     override func awakeFromNib() {
@@ -29,8 +29,9 @@ class BedViewCell: UICollectionViewCell {
         super.init(frame: frame)
         self.NameLable = UILabel(frame: CGRectMake(0, 0, frame.width, 20))
         self.AgeLable = UILabel(frame: CGRectMake(0, 22, frame.width/3, 20))
-        self.SexLable = UILabel(frame: CGRectMake((frame.width/3) + 2.0, 22,frame.width/3, 20))
-       
+        self.SexLable = UILabel(frame: CGRectMake(0, 30,frame.width,60))
+        self.SexLable?.lineBreakMode = .ByClipping
+        self.SexLable?.numberOfLines = 0
         self.contentView.addSubview(NameLable!)
         self.contentView.addSubview(AgeLable!)
         self.contentView.addSubview(SexLable!)

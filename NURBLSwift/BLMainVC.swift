@@ -56,24 +56,78 @@ class BLMainVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         rtable!.delegate=self
         rtable!.dataSource = self
         self.rtable!.registerClass(UITableViewCell.self, forCellReuseIdentifier: rreuseIdentifier)
-         MBProgressHUD.showHUDAddedTo(self.ltable, animated: true)
-         getpatlist("N")
+        getcurwardpats(flag:true)
         self.ltable?.addLegendHeaderWithRefreshingBlock({
-            self.getpatlist("Y")
+            self.getcurwardpats(flag:false)
         })
         self.rtable?.addLegendHeaderWithRefreshingBlock({
             if self.selectadm != ""
             {
-               self.getmenulist(self.selectadm,flag: "Y")
+               //self.getmenulist(self.selectadm,flag: "Y")
+               self.getpatemrcodes(flag: false)
             }
         })
         
        
     }
-    //取病人
+    //Mark:取所有病人
+    func getcurwardpats(flag:Bool=false){
+        if flag{
+            MBProgressHUD.showHUDAddedTo(self.ltable!, animated: true)
+        }
+        DataComm().getcurwardpats(self.loc, Hander: {
+            dataresponse in
+            var data = dataresponse.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+            var err=NSErrorPointer()
+            let dic = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: err) as? NSArray
+            if self.ltable!.header.isRefreshing(){
+                self.ltable!.header.endRefreshing()
+            }
+            if let arr=dic{
+                if flag{
+                    MBProgressHUD.hideHUDForView(self.ltable!, animated: true)
+                }
+               
+                self.LData = arr
+                self.ltable?.reloadData()
+                let obj = arr[0] as! NSDictionary
+                let adms: AnyObject? = obj["EpisodeID"]
+                var adm = ""
+                if let dd: AnyObject=adms{
+                    adm = "\(dd)"
+                    self.selectadm = adm.stringByReplacingOccurrencesOfString("-", withString: "", options: nil, range: nil)
+                    //self.getmenulist(self.selectadm,flag: "N")
+                    self.getpatemrcodes(flag: true)
+                }
+            }
+        })
+    }
+    //Mark:取病人所有模板webservice方式
+    func getpatemrcodes(flag:Bool=false){
+        if flag{
+            MBProgressHUD.showHUDAddedTo(self.rtable!, animated: true)
+        }
+        DataComm().getpatemrcodes(self.loc,adm:self.selectadm, Hander: {
+            dataresponse in
+            var data = dataresponse.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+            var err=NSErrorPointer()
+            let dic = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves, error: err) as? NSArray
+            if let arr=dic{
+                if flag{
+                    MBProgressHUD.hideHUDForView(self.rtable!, animated: true)
+                }
+                self.RData = dic
+                self.rtable?.reloadData()
+            }
+            if self.rtable!.header.isRefreshing(){
+                self.rtable!.header.endRefreshing()
+            }
+        })
+    }
+    //Mark:取病人http方式
     func getpatlist(flag:String)
     {
-        var url = ip+"/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=getcurwardpat&type=Method"
+        var url = ip+"/csp/dhc.nurse.ipad.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=getcurwardpat&type=Method"
         let params=["wardId":loc]
         
         Alamofire.request(.GET, url, parameters: params).responseString{
@@ -86,12 +140,20 @@ class BLMainVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             var err=NSErrorPointer()
             let dic = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: err) as? NSArray
             self.LData = dic
+            self.ltable?.reloadData()
             if let val=dic{
             let obj = val[0] as! NSDictionary
-            var adm = obj["EpisodeID"] as! String
+            let adms: AnyObject? = obj["EpisodeID"]
+            var adm = ""
+            if let dd: AnyObject=adms{
+                  adm = "\(dd)"
+            }else{
+                
+            }
+            //var adm = "\(obj["EpisodeID"])" // as! String
             self.selectadm = adm.stringByReplacingOccurrencesOfString("-", withString: "", options: nil, range: nil)
             self.getmenulist(self.selectadm,flag: "N")
-            self.ltable?.reloadData()
+            
             }else{
                
             }
@@ -252,12 +314,19 @@ class BLMainVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     {
         if let dd=LData{
         let obj = dd[indexPath.row] as! NSDictionary
-        var adm = obj["EpisodeID"] as! String
-        adm = adm.stringByReplacingOccurrencesOfString("-", withString: "", options: nil, range: nil)
-        selectadm = "\(adm)"
-            getmenulist("\(adm)",flag:"N")
+        var tmpadm: AnyObject? = obj["EpisodeID"]
+        var adm = ""
+        if let tmp: AnyObject=tmpadm{
+           adm = "\(tmp)"
+           adm = adm.stringByReplacingOccurrencesOfString("-", withString: "", options: nil, range: nil)
+           selectadm = adm
+           self.getpatemrcodes(flag: true)
+        }
+       
+            //getmenulist(adm,flag:"N")
         }
     }
+    //MARK:选择某个模板
     func stableclick(indexPath:NSIndexPath)
     {
         let obj = RData![indexPath.section] as! NSDictionary

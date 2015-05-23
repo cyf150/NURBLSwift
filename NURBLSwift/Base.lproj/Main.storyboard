@@ -8,7 +8,6 @@
         <!--More View Controller-->
         <scene sceneID="5s9-kQ-oWg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="E3T-uy-moL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="4nk-KL-b2w" customClass="MoreViewController" customModule="NURBLSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Et-Gi-yKm"/>
@@ -50,6 +49,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="4nk-KL-b2w" id="w6q-hv-1qL"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" alpha="0.84999999999999987" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zc1-ml-dmb">
                                 <rect key="frame" x="261" y="282" width="78" height="36"/>
@@ -72,6 +74,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="4nk-KL-b2w" id="lZe-tO-jcy"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -115,6 +120,7 @@
                         <outlet property="LocID" destination="JUW-Sq-BYp" id="qzs-py-Kef"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E3T-uy-moL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1059" y="728"/>
         </scene>

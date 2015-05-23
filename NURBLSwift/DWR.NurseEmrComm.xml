@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://dhcc.com.cn" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://dhcc.com.cn">
+    <types>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://dhcc.com.cn">
+            <s:element name="Excute">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="clsName" type="s:string"/>
+                        <s:element minOccurs="0" name="methodName" type="s:string"/>
+                        <s:element minOccurs="0" name="parameters" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="ExcuteResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element name="ExcuteResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="ExportBarCodeTemplate">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="code" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="ExportBarCodeTemplateResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element name="ExportBarCodeTemplateResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetData">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="mth" type="s:string"/>
+                        <s:element minOccurs="0" name="parrm" type="s:string"/>
+                        <s:element minOccurs="0" name="del" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetDataResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element name="GetDataResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetData22">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="mth" type="s:string"/>
+                        <s:element minOccurs="0" name="parrm" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetData22Response">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element name="GetData22Result" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetEmrData">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="mth" type="s:string"/>
+                        <s:element minOccurs="0" name="parrm" type="s:string"/>
+                        <s:element minOccurs="0" name="del" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetEmrDataResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element name="GetEmrDataResult" type="s0:DHCTranStream"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="DHCTranStream">
+                <s:sequence>
+                    <s:element minOccurs="0" name="CommString" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="GetLoc">
+                <s:complexType>
+                    <s:sequence/>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetLocResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element name="GetLocResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetQueryDataX">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="QueryName" type="s:string"/>
+                        <s:element minOccurs="0" name="parrm" type="s:string"/>
+                        <s:element minOccurs="0" name="del" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetQueryDataXResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element name="GetQueryDataXResult" type="s0:DataSet"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="DataSet">
+                <s:sequence>
+                    <s:element ref="s:schema"/>
+                    <s:any/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="GetQueryHead">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="parr" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="GetQueryHeadResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element name="GetQueryHeadResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="ImportBarCodeTemplate">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="code" type="s:string"/>
+                        <s:element minOccurs="0" name="TemplateContent" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="ImportBarCodeTemplateResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element name="ImportBarCodeTemplateResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SaveEmrItm">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="code" type="s:string"/>
+                        <s:element minOccurs="0" name="desc" type="s:string"/>
+                        <s:element minOccurs="0" name="data" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SaveEmrItmResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element name="SaveEmrItmResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SaveEmrMian">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="code" type="s:string"/>
+                        <s:element minOccurs="0" name="data" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SaveEmrMianResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element name="SaveEmrMianResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SaveMBData">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="parr" type="s:string"/>
+                        <s:element minOccurs="0" name="data" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SaveMBDataResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element name="SaveMBDataResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SaveMainName">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="code" type="s:string"/>
+                        <s:element minOccurs="0" name="type" type="s:string"/>
+                        <s:element minOccurs="0" name="data" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="SaveMainNameResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element name="SaveMainNameResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="generatorJs">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" name="parr" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="generatorJsResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element name="generatorJsResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+        </s:schema>
+    </types>
+    <message name="ExcuteSoapIn">
+        <part name="parameters" element="s0:Excute"/>
+    </message>
+    <message name="ExcuteSoapOut">
+        <part name="parameters" element="s0:ExcuteResponse"/>
+    </message>
+    <message name="ExportBarCodeTemplateSoapIn">
+        <part name="parameters" element="s0:ExportBarCodeTemplate"/>
+    </message>
+    <message name="ExportBarCodeTemplateSoapOut">
+        <part name="parameters" element="s0:ExportBarCodeTemplateResponse"/>
+    </message>
+    <message name="GetDataSoapIn">
+        <part name="parameters" element="s0:GetData"/>
+    </message>
+    <message name="GetDataSoapOut">
+        <part name="parameters" element="s0:GetDataResponse"/>
+    </message>
+    <message name="GetData22SoapIn">
+        <part name="parameters" element="s0:GetData22"/>
+    </message>
+    <message name="GetData22SoapOut">
+        <part name="parameters" element="s0:GetData22Response"/>
+    </message>
+    <message name="GetEmrDataSoapIn">
+        <part name="parameters" element="s0:GetEmrData"/>
+    </message>
+    <message name="GetEmrDataSoapOut">
+        <part name="parameters" element="s0:GetEmrDataResponse"/>
+    </message>
+    <message name="GetLocSoapIn">
+        <part name="parameters" element="s0:GetLoc"/>
+    </message>
+    <message name="GetLocSoapOut">
+        <part name="parameters" element="s0:GetLocResponse"/>
+    </message>
+    <message name="GetQueryDataXSoapIn">
+        <part name="parameters" element="s0:GetQueryDataX"/>
+    </message>
+    <message name="GetQueryDataXSoapOut">
+        <part name="parameters" element="s0:GetQueryDataXResponse"/>
+    </message>
+    <message name="GetQueryHeadSoapIn">
+        <part name="parameters" element="s0:GetQueryHead"/>
+    </message>
+    <message name="GetQueryHeadSoapOut">
+        <part name="parameters" element="s0:GetQueryHeadResponse"/>
+    </message>
+    <message name="ImportBarCodeTemplateSoapIn">
+        <part name="parameters" element="s0:ImportBarCodeTemplate"/>
+    </message>
+    <message name="ImportBarCodeTemplateSoapOut">
+        <part name="parameters" element="s0:ImportBarCodeTemplateResponse"/>
+    </message>
+    <message name="SaveEmrItmSoapIn">
+        <part name="parameters" element="s0:SaveEmrItm"/>
+    </message>
+    <message name="SaveEmrItmSoapOut">
+        <part name="parameters" element="s0:SaveEmrItmResponse"/>
+    </message>
+    <message name="SaveEmrMianSoapIn">
+        <part name="parameters" element="s0:SaveEmrMian"/>
+    </message>
+    <message name="SaveEmrMianSoapOut">
+        <part name="parameters" element="s0:SaveEmrMianResponse"/>
+    </message>
+    <message name="SaveMBDataSoapIn">
+        <part name="parameters" element="s0:SaveMBData"/>
+    </message>
+    <message name="SaveMBDataSoapOut">
+        <part name="parameters" element="s0:SaveMBDataResponse"/>
+    </message>
+    <message name="SaveMainNameSoapIn">
+        <part name="parameters" element="s0:SaveMainName"/>
+    </message>
+    <message name="SaveMainNameSoapOut">
+        <part name="parameters" element="s0:SaveMainNameResponse"/>
+    </message>
+    <message name="generatorJsSoapIn">
+        <part name="parameters" element="s0:generatorJs"/>
+    </message>
+    <message name="generatorJsSoapOut">
+        <part name="parameters" element="s0:generatorJsResponse"/>
+    </message>
+    <portType name="DocServCommSoap">
+        <operation name="Excute">
+            <input message="s0:ExcuteSoapIn"/>
+            <output message="s0:ExcuteSoapOut"/>
+        </operation>
+        <operation name="ExportBarCodeTemplate">
+            <input message="s0:ExportBarCodeTemplateSoapIn"/>
+            <output message="s0:ExportBarCodeTemplateSoapOut"/>
+        </operation>
+        <operation name="GetData">
+            <input message="s0:GetDataSoapIn"/>
+            <output message="s0:GetDataSoapOut"/>
+        </operation>
+        <operation name="GetData22">
+            <input message="s0:GetData22SoapIn"/>
+            <output message="s0:GetData22SoapOut"/>
+        </operation>
+        <operation name="GetEmrData">
+            <input message="s0:GetEmrDataSoapIn"/>
+            <output message="s0:GetEmrDataSoapOut"/>
+        </operation>
+        <operation name="GetLoc">
+            <input message="s0:GetLocSoapIn"/>
+            <output message="s0:GetLocSoapOut"/>
+        </operation>
+        <operation name="GetQueryDataX">
+            <input message="s0:GetQueryDataXSoapIn"/>
+            <output message="s0:GetQueryDataXSoapOut"/>
+        </operation>
+        <operation name="GetQueryHead">
+            <input message="s0:GetQueryHeadSoapIn"/>
+            <output message="s0:GetQueryHeadSoapOut"/>
+        </operation>
+        <operation name="ImportBarCodeTemplate">
+            <input message="s0:ImportBarCodeTemplateSoapIn"/>
+            <output message="s0:ImportBarCodeTemplateSoapOut"/>
+        </operation>
+        <operation name="SaveEmrItm">
+            <input message="s0:SaveEmrItmSoapIn"/>
+            <output message="s0:SaveEmrItmSoapOut"/>
+        </operation>
+        <operation name="SaveEmrMian">
+            <input message="s0:SaveEmrMianSoapIn"/>
+            <output message="s0:SaveEmrMianSoapOut"/>
+        </operation>
+        <operation name="SaveMBData">
+            <input message="s0:SaveMBDataSoapIn"/>
+            <output message="s0:SaveMBDataSoapOut"/>
+        </operation>
+        <operation name="SaveMainName">
+            <input message="s0:SaveMainNameSoapIn"/>
+            <output message="s0:SaveMainNameSoapOut"/>
+        </operation>
+        <operation name="generatorJs">
+            <input message="s0:generatorJsSoapIn"/>
+            <output message="s0:generatorJsSoapOut"/>
+        </operation>
+    </portType>
+    <binding name="DocServCommSoap" type="s0:DocServCommSoap">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="Excute">
+            <soap:operation soapAction="http://dhcc.com.cn/DWR.NurseEmrComm.Excute" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="ExportBarCodeTemplate">
+            <soap:operation soapAction="http://dhcc.com.cn/DWR.NurseEmrComm.ExportBarCodeTemplate" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetData">
+            <soap:operation soapAction="http://dhcc.com.cn/DWR.NurseEmrComm.GetData" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetData22">
+            <soap:operation soapAction="http://dhcc.com.cn/DWR.NurseEmrComm.GetData22" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetEmrData">
+            <soap:operation soapAction="http://dhcc.com.cn/DWR.NurseEmrComm.GetEmrData" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetLoc">
+            <soap:operation soapAction="http://dhcc.com.cn/DWR.NurseEmrComm.GetLoc" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetQueryDataX">
+            <soap:operation soapAction="http://dhcc.com.cn/DWR.NurseEmrComm.GetQueryDataX" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="GetQueryHead">
+            <soap:operation soapAction="http://dhcc.com.cn/DWR.NurseEmrComm.GetQueryHead" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="ImportBarCodeTemplate">
+            <soap:operation soapAction="http://dhcc.com.cn/DWR.NurseEmrComm.ImportBarCodeTemplate" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="SaveEmrItm">
+            <soap:operation soapAction="http://dhcc.com.cn/DWR.NurseEmrComm.SaveEmrItm" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="SaveEmrMian">
+            <soap:operation soapAction="http://dhcc.com.cn/DWR.NurseEmrComm.SaveEmrMian" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="SaveMBData">
+            <soap:operation soapAction="http://dhcc.com.cn/DWR.NurseEmrComm.SaveMBData" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="SaveMainName">
+            <soap:operation soapAction="http://dhcc.com.cn/DWR.NurseEmrComm.SaveMainName" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="generatorJs">
+            <soap:operation soapAction="http://dhcc.com.cn/DWR.NurseEmrComm.generatorJs" style="document"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="DocServComm">
+        <port name="DocServCommSoap" binding="s0:DocServCommSoap">
+            <soap:address location="http://10.160.16.91/dthealth/web/DWR.NurseEmrComm.cls"/>
+        </port>
+    </service>
+</definitions>

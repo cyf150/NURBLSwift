@@ -14,4 +14,8 @@
 //#import <MJExtension/MJExtension.h>
 //#import <MBProgressHUD/MBProgressHUD.h>
 #import <AFNetworking/AFNetworking.h>
+#import "SoapUtility.h"
+#import "SoapService.h"
+#import "DDXMLElement+WSDL.h"
+
 

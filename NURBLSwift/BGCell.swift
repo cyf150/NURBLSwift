@@ -30,7 +30,8 @@ class BGCell: UITableViewCell {
                     var textview = UITextView(frame: rect)
                     textview.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
                     textview.text = "\(val)"
-                    textview.textAlignment = .Left
+                    textview.textAlignment = .Natural
+                    
                     textview.editable=false
                     textview.selectable=false
                     textview.layer.borderColor = UIColor.blackColor().CGColor

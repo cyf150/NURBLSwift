@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		C548B8F4E13B75900F2288D1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F2CE13AEA1BDE04C529C53 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C71B1F9B1B0F5972003892B8 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C71B1F861B0F5972003892B8 /* DDXMLElementAdditions.m */; };
+		C71B1F9C1B0F5972003892B8 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = C71B1F891B0F5972003892B8 /* NSString+DDXML.m */; };
+		C71B1F9D1B0F5972003892B8 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = C71B1F8C1B0F5972003892B8 /* DDXMLDocument.m */; };
+		C71B1F9E1B0F5972003892B8 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = C71B1F8E1B0F5972003892B8 /* DDXMLElement.m */; };
+		C71B1F9F1B0F5972003892B8 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C71B1F901B0F5972003892B8 /* DDXMLNode.m */; };
+		C71B1FA01B0F5972003892B8 /* DDXMLElement+WSDL.m in Sources */ = {isa = PBXBuildFile; fileRef = C71B1F951B0F5972003892B8 /* DDXMLElement+WSDL.m */; };
+		C71B1FA11B0F5972003892B8 /* SoapService.m in Sources */ = {isa = PBXBuildFile; fileRef = C71B1F981B0F5972003892B8 /* SoapService.m */; };
+		C71B1FA21B0F5972003892B8 /* SoapUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C71B1F9A1B0F5972003892B8 /* SoapUtility.m */; };
+		C71B1FA41B0F5A15003892B8 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C71B1FA31B0F5A15003892B8 /* libxml2.2.dylib */; };
+		C71B1FA61B0F601E003892B8 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C71B1FA51B0F601E003892B8 /* libxml2.dylib */; };
+		C71B1FA81B0F63C9003892B8 /* DWR.NurseEmrComm.xml in Resources */ = {isa = PBXBuildFile; fileRef = C71B1FA71B0F63C9003892B8 /* DWR.NurseEmrComm.xml */; };
+		C71B1FAE1B0F6BC0003892B8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C71B1FAD1B0F6BC0003892B8 /* libz.dylib */; };
 		C72A2CEF1AF327D60022E4D3 /* BGTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72A2CEE1AF327D60022E4D3 /* BGTableViewController.swift */; };
 		C72A2CF11AF609430022E4D3 /* HeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72A2CF01AF609420022E4D3 /* HeadView.swift */; };
 		C72A2CF31AF6FD140022E4D3 /* BGCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72A2CF21AF6FD140022E4D3 /* BGCell.swift */; };
@@ -45,6 +57,30 @@
 		12F2CE13AEA1BDE04C529C53 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E1F7D98141A4F76EA8AE5B0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B829F630E910C8D62698A0B7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C71B1F0B1B0E07C3003892B8 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		C71B1F851B0F5972003892B8 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
+		C71B1F861B0F5972003892B8 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
+		C71B1F881B0F5972003892B8 /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
+		C71B1F891B0F5972003892B8 /* NSString+DDXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DDXML.m"; sourceTree = "<group>"; };
+		C71B1F8A1B0F5972003892B8 /* DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXML.h; sourceTree = "<group>"; };
+		C71B1F8B1B0F5972003892B8 /* DDXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLDocument.h; sourceTree = "<group>"; };
+		C71B1F8C1B0F5972003892B8 /* DDXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLDocument.m; sourceTree = "<group>"; };
+		C71B1F8D1B0F5972003892B8 /* DDXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElement.h; sourceTree = "<group>"; };
+		C71B1F8E1B0F5972003892B8 /* DDXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElement.m; sourceTree = "<group>"; };
+		C71B1F8F1B0F5972003892B8 /* DDXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLNode.h; sourceTree = "<group>"; };
+		C71B1F901B0F5972003892B8 /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLNode.m; sourceTree = "<group>"; };
+		C71B1F921B0F5972003892B8 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
+		C71B1F941B0F5972003892B8 /* DDXMLElement+WSDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DDXMLElement+WSDL.h"; sourceTree = "<group>"; };
+		C71B1F951B0F5972003892B8 /* DDXMLElement+WSDL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DDXMLElement+WSDL.m"; sourceTree = "<group>"; };
+		C71B1F961B0F5972003892B8 /* Soap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Soap.h; sourceTree = "<group>"; };
+		C71B1F971B0F5972003892B8 /* SoapService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapService.h; sourceTree = "<group>"; };
+		C71B1F981B0F5972003892B8 /* SoapService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapService.m; sourceTree = "<group>"; };
+		C71B1F991B0F5972003892B8 /* SoapUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapUtility.h; sourceTree = "<group>"; };
+		C71B1F9A1B0F5972003892B8 /* SoapUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapUtility.m; sourceTree = "<group>"; };
+		C71B1FA31B0F5A15003892B8 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		C71B1FA51B0F601E003892B8 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		C71B1FA71B0F63C9003892B8 /* DWR.NurseEmrComm.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = DWR.NurseEmrComm.xml; sourceTree = "<group>"; };
+		C71B1FAD1B0F6BC0003892B8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C72A2CEE1AF327D60022E4D3 /* BGTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BGTableViewController.swift; sourceTree = "<group>"; };
 		C72A2CF01AF609420022E4D3 /* HeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadView.swift; sourceTree = "<group>"; };
 		C72A2CF21AF6FD140022E4D3 /* BGCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BGCell.swift; sourceTree = "<group>"; };
@@ -78,6 +114,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C71B1FAE1B0F6BC0003892B8 /* libz.dylib in Frameworks */,
+				C71B1FA61B0F601E003892B8 /* libxml2.dylib in Frameworks */,
+				C71B1FA41B0F5A15003892B8 /* libxml2.2.dylib in Frameworks */,
 				C548B8F4E13B75900F2288D1 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,9 +134,78 @@
 		C31EFDA0F3281F6DEDDFEBC2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C71B1FAD1B0F6BC0003892B8 /* libz.dylib */,
+				C71B1FA51B0F601E003892B8 /* libxml2.dylib */,
+				C71B1FA31B0F5A15003892B8 /* libxml2.2.dylib */,
 				12F2CE13AEA1BDE04C529C53 /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C71B1F821B0F5959003892B8 /* framework33 */ = {
+			isa = PBXGroup;
+			children = (
+				C71B1F831B0F5972003892B8 /* KissXML */,
+				C71B1F931B0F5972003892B8 /* SoapUtility */,
+			);
+			name = framework33;
+			sourceTree = "<group>";
+		};
+		C71B1F831B0F5972003892B8 /* KissXML */ = {
+			isa = PBXGroup;
+			children = (
+				C71B1F841B0F5972003892B8 /* Additions */,
+				C71B1F871B0F5972003892B8 /* Categories */,
+				C71B1F8A1B0F5972003892B8 /* DDXML.h */,
+				C71B1F8B1B0F5972003892B8 /* DDXMLDocument.h */,
+				C71B1F8C1B0F5972003892B8 /* DDXMLDocument.m */,
+				C71B1F8D1B0F5972003892B8 /* DDXMLElement.h */,
+				C71B1F8E1B0F5972003892B8 /* DDXMLElement.m */,
+				C71B1F8F1B0F5972003892B8 /* DDXMLNode.h */,
+				C71B1F901B0F5972003892B8 /* DDXMLNode.m */,
+				C71B1F911B0F5972003892B8 /* Private */,
+			);
+			path = KissXML;
+			sourceTree = "<group>";
+		};
+		C71B1F841B0F5972003892B8 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				C71B1F851B0F5972003892B8 /* DDXMLElementAdditions.h */,
+				C71B1F861B0F5972003892B8 /* DDXMLElementAdditions.m */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
+		C71B1F871B0F5972003892B8 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				C71B1F881B0F5972003892B8 /* NSString+DDXML.h */,
+				C71B1F891B0F5972003892B8 /* NSString+DDXML.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		C71B1F911B0F5972003892B8 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				C71B1F921B0F5972003892B8 /* DDXMLPrivate.h */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		C71B1F931B0F5972003892B8 /* SoapUtility */ = {
+			isa = PBXGroup;
+			children = (
+				C71B1F941B0F5972003892B8 /* DDXMLElement+WSDL.h */,
+				C71B1F951B0F5972003892B8 /* DDXMLElement+WSDL.m */,
+				C71B1F961B0F5972003892B8 /* Soap.h */,
+				C71B1F971B0F5972003892B8 /* SoapService.h */,
+				C71B1F981B0F5972003892B8 /* SoapService.m */,
+				C71B1F991B0F5972003892B8 /* SoapUtility.h */,
+				C71B1F9A1B0F5972003892B8 /* SoapUtility.m */,
+			);
+			path = SoapUtility;
 			sourceTree = "<group>";
 		};
 		C75DA65E1ADD41BF00D3D3C7 = {
@@ -123,6 +231,7 @@
 		C75DA6691ADD41BF00D3D3C7 /* NURBLSwift */ = {
 			isa = PBXGroup;
 			children = (
+				C71B1F821B0F5959003892B8 /* framework33 */,
 				C75DA6C61ADD4DC800D3D3C7 /* Main */,
 				C75DA6C51ADD4D9D00D3D3C7 /* PresetentionLayer */,
 				C75DA6C41ADD4D9400D3D3C7 /* LogicLayer */,
@@ -137,7 +246,9 @@
 			isa = PBXGroup;
 			children = (
 				C75DA66B1ADD41BF00D3D3C7 /* Info.plist */,
+				C71B1FA71B0F63C9003892B8 /* DWR.NurseEmrComm.xml */,
 				C7F9E0DA1AEBCA5A00007E57 /* NURBLSwift-Bridging-Header.h */,
+				C71B1F0B1B0E07C3003892B8 /* MyPlayground.playground */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -341,6 +452,7 @@
 				C75DA6741ADD41BF00D3D3C7 /* Main.storyboard in Resources */,
 				C75DA6791ADD41BF00D3D3C7 /* LaunchScreen.xib in Resources */,
 				C75DA6761ADD41BF00D3D3C7 /* Images.xcassets in Resources */,
+				C71B1FA81B0F63C9003892B8 /* DWR.NurseEmrComm.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,18 +520,26 @@
 			files = (
 				C7F9E0CC1AE674D300007E57 /* BedViewCell.swift in Sources */,
 				C7F9E0C71AE52A7800007E57 /* BedCollectionViewController.swift in Sources */,
+				C71B1FA01B0F5972003892B8 /* DDXMLElement+WSDL.m in Sources */,
 				C7F9E0D91AEBBFD400007E57 /* BedpatDAO.swift in Sources */,
 				C75DA6711ADD41BF00D3D3C7 /* SecondViewController.swift in Sources */,
+				C71B1F9C1B0F5972003892B8 /* NSString+DDXML.m in Sources */,
 				C7E6577C1AFF0A2D00BB0444 /* HttpUtil.swift in Sources */,
+				C71B1F9D1B0F5972003892B8 /* DDXMLDocument.m in Sources */,
 				C72A2CF31AF6FD140022E4D3 /* BGCell.swift in Sources */,
+				C71B1F9E1B0F5972003892B8 /* DDXMLElement.m in Sources */,
 				C7E6577A1AFCDD6A00BB0444 /* BLMainVC.swift in Sources */,
 				C7E657781AFCC14A00BB0444 /* FeartureVC.swift in Sources */,
+				C71B1FA11B0F5972003892B8 /* SoapService.m in Sources */,
+				C71B1F9B1B0F5972003892B8 /* DDXMLElementAdditions.m in Sources */,
 				C7F9E0CF1AE9182B00007E57 /* DataComm.swift in Sources */,
+				C71B1F9F1B0F5972003892B8 /* DDXMLNode.m in Sources */,
 				C7F9E0D11AE91A4200007E57 /* LogonModel.swift in Sources */,
 				C7F9E0D71AEBBFA700007E57 /* LogonDAO.swift in Sources */,
 				C7F9E0D31AE91C4700007E57 /* BedModel.swift in Sources */,
 				C72A2CEF1AF327D60022E4D3 /* BGTableViewController.swift in Sources */,
 				C75DA66D1ADD41BF00D3D3C7 /* AppDelegate.swift in Sources */,
+				C71B1FA21B0F5972003892B8 /* SoapUtility.m in Sources */,
 				C72A2CF11AF609430022E4D3 /* HeadView.swift in Sources */,
 				C77372C61AFB090600D552DC /* AddBGItemVC.swift in Sources */,
 				C75DA66F1ADD41BF00D3D3C7 /* MoreViewController.swift in Sources */,
@@ -552,8 +672,36 @@
 			baseConfigurationReference = B829F630E910C8D62698A0B7 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "\"$PODS_FRAMEWORK_BUILD_PATH\"";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"\"${PODS_ROOT}/Headers\"",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = NURBLSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MJExtension\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"RDVTabBarController\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SnapKit\"",
+					"-lxml2",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NURBLSwift/NURBLSwift-Bridging-Header.h";
 			};
@@ -564,8 +712,36 @@
 			baseConfigurationReference = 7E1F7D98141A4F76EA8AE5B0 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = "\"$PODS_FRAMEWORK_BUILD_PATH\"";
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"\"${PODS_ROOT}/Headers\"",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = NURBLSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MJExtension\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"RDVTabBarController\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SnapKit\"",
+					"-lxml2",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NURBLSwift/NURBLSwift-Bridging-Header.h";
 			};
