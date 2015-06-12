@@ -44,10 +44,10 @@ class FeartureVC: UIViewController {
 
     }
     func showhlbl(sender:UIButton){
-       var dest = BLMainVC()
+       let dest = BLMainVC()
         dest.hidesBottomBarWhenPushed=true
         dest.title="护理病历"
-        println(dest.supportedInterfaceOrientations())
+        print(dest.supportedInterfaceOrientations())
         
        //presentViewController(dest, animated: true, completion: nil)
        showViewController(dest, sender: sender)

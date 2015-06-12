@@ -18,7 +18,7 @@ class HeadView: UIView {
       convenience init(str:String)
     {
       var arr = str.componentsSeparatedByString("^")
-      var myframe = CGRectMake(CGFloat(arr[5].toInt()!), CGFloat(arr[6].toInt()!), CGFloat(arr[1].toInt()!), CGFloat(arr[0].toInt()!))
+      let myframe = CGRectMake(CGFloat(Int(arr[5])!), CGFloat(Int(arr[6])!), CGFloat(Int(arr[1])!), CGFloat(Int(arr[0])!))
       self.init(frame:myframe)
       Text = UILabel(frame: CGRectMake(0, 0, myframe.width, myframe.height))
       Textcontent = arr[9]
@@ -35,7 +35,7 @@ class HeadView: UIView {
    }
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
-        var context = UIGraphicsGetCurrentContext();
+        let context = UIGraphicsGetCurrentContext();
         CGContextSetLineWidth(context, 1.0);
         CGContextSetStrokeColorWithColor(context, UIColor.blackColor().CGColor)
         CGContextAddRect(context, rect);

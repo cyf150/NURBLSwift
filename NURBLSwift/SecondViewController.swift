@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import Alamofire
+//import Alamofire
 class SecondViewController: UIViewController {
 
     @IBAction func click(sender: AnyObject) {
-        var destvc = BGTableViewController()
+        let destvc = BGTableViewController()
         self.showViewController(destvc, sender: nil)
     }
     @IBOutlet weak var testclick: UIButton!
@@ -33,7 +33,7 @@ class SecondViewController: UIViewController {
                 self.textview2.text = string!
             }
             .responseJSON { (_, _, JSON, _) in
-                println(JSON)
+                print(JSON)
         }
     }
     override func viewDidLoad() {

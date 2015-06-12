@@ -17,7 +17,7 @@ class AddBGItemVC: UIViewController {
     var parentobj:BGTableViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
-        println(headmodel)
+        print(headmodel)
         model=[["D102":"日期"],["D103":"时间"],["G104":"项目"],["S105":"脉搏是"],["S106":"脉搏程看"],["S107":"脉搏擦擦擦"]]
         initview()
         self.view.backgroundColor=UIColor.lightTextColor()
@@ -25,19 +25,19 @@ class AddBGItemVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     func initview(){
-        var xmargin = CGFloat(5)
-        var ymargin = CGFloat(5)
+        let xmargin = CGFloat(5)
+        let ymargin = CGFloat(5)
         var y = CGFloat(10)
-        println(self.view.frame)
-        println(self.presentedViewController)
+        print(self.view.frame)
+        print(self.presentedViewController)
         var lw = CGFloat(self.view.bounds.width/2)
         var lh = CGFloat(20)
         var lablew=CGFloat(10)
         var lableh=CGFloat(10)
         for val in model{
             for itm in val.values{
-                var itmstring = itm as! NSString
-                var size = itmstring.boundingRectWithSize(CGSizeMake(100, 100), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [:], context: NSStringDrawingContext())
+                let itmstring = itm as! NSString
+                let size = itmstring.boundingRectWithSize(CGSizeMake(100, 100), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [:], context: NSStringDrawingContext())
                 if size.width > lablew
                 {
                     lablew=size.width
@@ -51,18 +51,18 @@ class AddBGItemVC: UIViewController {
         lableh*=1.5
         lablew*=1.5
         var num=0
-        for (index,dic) in enumerate(model){
+        for (index,dic) in model.enumerate(){
             for itm in dic.keys{
-               var text = dic[itm] as! NSString
-               var firstchar = itm.substringToIndex(1)
+               let text = dic[itm] as! NSString
+               let firstchar = itm.substringToIndex(1)
                 switch(firstchar){
                   case "D":
-                    println("D")
+                    print("D")
                   case "S":
-                    var label=UILabel(frame: CGRectMake(xmargin, y, lablew, lableh))
+                    let label=UILabel(frame: CGRectMake(xmargin, y, lablew, lableh))
                     label.text = text as String
                     self.view.addSubview(label)
-                    var textfield = UITextField(frame: CGRectMake(lablew+xmargin+5, y, lablew, lableh))
+                    let textfield = UITextField(frame: CGRectMake(lablew+xmargin+5, y, lablew, lableh))
                     textfield.layer.borderColor = UIColor.blackColor().CGColor
                     textfield.layer.borderWidth = 1
                     textfield.backgroundColor=UIColor.redColor()
@@ -72,11 +72,11 @@ class AddBGItemVC: UIViewController {
                     num+=1
                     y+=lableh + ymargin
                   case "G":
-                    var ratio = CGFloat(4)
-                    var label=UILabel(frame: CGRectMake(xmargin, y, lablew, lableh))
+                    let ratio = CGFloat(4)
+                    let label=UILabel(frame: CGRectMake(xmargin, y, lablew, lableh))
                     label.text = text as String
                     self.view.addSubview(label)
-                    var textview=UITextView(frame: CGRectMake(lablew+xmargin+5, y, lablew, lableh*ratio))
+                    let textview=UITextView(frame: CGRectMake(lablew+xmargin+5, y, lablew, lableh*ratio))
                     self.view.addSubview(textview)
                     textview.layer.borderColor = UIColor.blackColor().CGColor
                     textview.layer.borderWidth = 1.0
@@ -85,12 +85,12 @@ class AddBGItemVC: UIViewController {
                     num+=1
                     y+=ymargin + lableh*ratio
                 default :
-                    println("none")
+                    print("none")
                     
                 }
             }
         }
-        var btnsave=UIButton(frame: CGRectMake(xmargin, y+ymargin, 100, 20))
+        let btnsave=UIButton(frame: CGRectMake(xmargin, y+ymargin, 100, 20))
         btnsave.setTitle("保存", forState: .Normal)
         btnsave.backgroundColor=UIColor.greenColor()
         btnsave.addTarget(self, action: Selector("Save"), forControlEvents: .TouchUpInside)
@@ -98,16 +98,16 @@ class AddBGItemVC: UIViewController {
         
     }
     func Save(){
-        for (index,itm) in enumerate(itmarray){
+        for (index,itm) in itmarray.enumerate(){
             var val=""
-            var obj=self.view.viewWithTag(index+10000)
+            let obj=self.view.viewWithTag(index+10000)
             if obj is UITextView {
                val = (obj as! UITextView).text
             }
             if obj is UITextField {
                 val = (obj as! UITextField).text
             }
-            var itmname=headmodel[itm as String]
+            let itmname=headmodel[itm as String]
             if let itmn=itmname{
                  datadic[itmn] = val
             }
@@ -121,7 +121,7 @@ class AddBGItemVC: UIViewController {
                 obj.myTableView?.reloadData()
             }
         })
-        println(datadic)
+        print(datadic)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Alamofire
-import MBProgressHUD
+//import Alamofire
+//import MBProgressHUD
 
 class BLMainVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
@@ -56,15 +56,15 @@ class BLMainVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         rtable!.delegate=self
         rtable!.dataSource = self
         self.rtable!.registerClass(UITableViewCell.self, forCellReuseIdentifier: rreuseIdentifier)
-        getcurwardpats(flag:true)
+        getcurwardpats(true)
         self.ltable?.addLegendHeaderWithRefreshingBlock({
-            self.getcurwardpats(flag:false)
+            self.getcurwardpats(false)
         })
         self.rtable?.addLegendHeaderWithRefreshingBlock({
             if self.selectadm != ""
             {
                //self.getmenulist(self.selectadm,flag: "Y")
-               self.getpatemrcodes(flag: false)
+               self.getpatemrcodes(false)
             }
         })
         
@@ -73,19 +73,19 @@ class BLMainVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     //Mark:取所有病人
     func getcurwardpats(flag:Bool=false){
         if flag{
-            MBProgressHUD.showHUDAddedTo(self.ltable!, animated: true)
+            //MBProgressHUD.showHUDAddedTo(self.ltable!, animated: true)
         }
         DataComm().getcurwardpats(self.loc, Hander: {
             dataresponse in
             var data = dataresponse.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
             var err=NSErrorPointer()
-            let dic = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: err) as? NSArray
+            let dic = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSArray
             if self.ltable!.header.isRefreshing(){
                 self.ltable!.header.endRefreshing()
             }
             if let arr=dic{
                 if flag{
-                    MBProgressHUD.hideHUDForView(self.ltable!, animated: true)
+                    //MBProgressHUD.hideHUDForView(self.ltable!, animated: true)
                 }
                
                 self.LData = arr
@@ -95,9 +95,9 @@ class BLMainVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                 var adm = ""
                 if let dd: AnyObject=adms{
                     adm = "\(dd)"
-                    self.selectadm = adm.stringByReplacingOccurrencesOfString("-", withString: "", options: nil, range: nil)
+                    self.selectadm = adm.stringByReplacingOccurrencesOfString("-", withString: "", options: [], range: nil)
                     //self.getmenulist(self.selectadm,flag: "N")
-                    self.getpatemrcodes(flag: true)
+                    self.getpatemrcodes(true)
                 }
             }
         })
@@ -109,9 +109,9 @@ class BLMainVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         }
         DataComm().getpatemrcodes(self.loc,adm:self.selectadm, Hander: {
             dataresponse in
-            var data = dataresponse.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+            let data = dataresponse.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
             var err=NSErrorPointer()
-            let dic = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves, error: err) as? NSArray
+            let dic = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves) as? NSArray
             if let arr=dic{
                 if flag{
                     MBProgressHUD.hideHUDForView(self.rtable!, animated: true)
@@ -132,13 +132,13 @@ class BLMainVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         
         Alamofire.request(.GET, url, parameters: params).responseString{
             (_,_,string,_) in
-            println(string)
+            print(string)
             if let str=string{
-            let astring = str.stringByReplacingOccurrencesOfString("\r\n", withString: "", options: nil, range: nil) as NSString
+            let astring = str.stringByReplacingOccurrencesOfString("\r\n", withString: "", options: [], range: nil) as NSString
             //println(astring)
             var data = astring.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
             var err=NSErrorPointer()
-            let dic = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: err) as? NSArray
+            let dic = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSArray
             self.LData = dic
             self.ltable?.reloadData()
             if let val=dic{
@@ -151,7 +151,7 @@ class BLMainVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                 
             }
             //var adm = "\(obj["EpisodeID"])" // as! String
-            self.selectadm = adm.stringByReplacingOccurrencesOfString("-", withString: "", options: nil, range: nil)
+            self.selectadm = adm.stringByReplacingOccurrencesOfString("-", withString: "", options: [], range: nil)
             self.getmenulist(self.selectadm,flag: "N")
             
             }else{
@@ -181,11 +181,11 @@ class BLMainVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         var url = ip+"/csp/dhc.nurse.pda.common.getdata.csp?className=NurEmr.Ipad.Common&methodName=getemrcode&type=Method"
         let param=["Adm":Sadm,"Loc":loc]
         Alamofire.request(.GET, url, parameters: param).responseString{  (_,_,string,_) in
-            let astring = string!.stringByReplacingOccurrencesOfString("\r\n", withString: "", options: nil, range: nil) as NSString
+            let astring = string!.stringByReplacingOccurrencesOfString("\r\n", withString: "", options: [], range: nil) as NSString
             //println(astring)
             var data = astring.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
             var err=NSErrorPointer()
-            let dic = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves, error: err) as? NSArray
+            let dic = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves) as? NSArray
             self.RData = dic
             self.rtable?.reloadData()
             if flag=="N"{
@@ -205,9 +205,9 @@ class BLMainVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         let params=["code":"DHCNURXH2"]
         let request = Alamofire.request(.GET,url,parameters:params).responseString{
             (_,_,string,_) in
-            println(string)
-            let astring = string?.stringByReplacingOccurrencesOfString("\r\n", withString: "", options: nil, range: nil)
-            println(astring)
+            print(string)
+            let astring = string?.stringByReplacingOccurrencesOfString("\r\n", withString: "", options: [], range: nil)
+            print(astring)
             
         }
         //debugPrintln(request)
@@ -246,8 +246,8 @@ class BLMainVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
          if tableView == ltable!{
          }else{
         
-        if let ti = RData{
-            var obj = RData![section] as! NSDictionary
+        if let _ = RData{
+            let obj = RData![section] as! NSDictionary
             title = obj["NodName"] as! String
         }
         
@@ -258,7 +258,7 @@ class BLMainVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if tableView == ltable!{
-            var cell = tableView.dequeueReusableCellWithIdentifier(lreuseIdentifier) as! UITableViewCell
+            var cell = tableView.dequeueReusableCellWithIdentifier(lreuseIdentifier)! as UITableViewCell
             if let dd=LData{
             let obj = dd[indexPath.row] as! NSDictionary
             cell.textLabel?.text = obj["PatName"]  as? String
@@ -288,14 +288,14 @@ class BLMainVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             return cellr
         }
     }
-    func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
+    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
         var titlearr = [NSString]()
         if let ti = RData{
             for itm in ti {
-                var obj = itm as! NSDictionary
-                var title = obj["NodName"] as! NSString
-                var range = NSRange(location: 0, length: 1)
-                var name = title.substringWithRange(range)
+                let obj = itm as! NSDictionary
+                let title = obj["NodName"] as! NSString
+                let range = NSRange(location: 0, length: 1)
+                let name = title.substringWithRange(range)
                 titlearr.append(name)
             }
             //titlearr.append(itmname)
@@ -318,9 +318,9 @@ class BLMainVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         var adm = ""
         if let tmp: AnyObject=tmpadm{
            adm = "\(tmp)"
-           adm = adm.stringByReplacingOccurrencesOfString("-", withString: "", options: nil, range: nil)
+           adm = adm.stringByReplacingOccurrencesOfString("-", withString: "", options: [], range: nil)
            selectadm = adm
-           self.getpatemrcodes(flag: true)
+           self.getpatemrcodes(true)
         }
        
             //getmenulist(adm,flag:"N")
@@ -332,8 +332,8 @@ class BLMainVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         let obj = RData![indexPath.section] as! NSDictionary
         let subobj = obj["subnod"] as! NSArray
         let sub = subobj[indexPath.row] as! NSDictionary
-        var code = sub["EmrCode"] as? String
-        var dest = BGTableViewController()
+        let code = sub["EmrCode"] as? String
+        let dest = BGTableViewController()
         dest.ip = ip
         dest.code = code!
         dest.adm = selectadm

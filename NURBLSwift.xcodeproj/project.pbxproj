@@ -413,6 +413,7 @@
 		C75DA65F1ADD41BF00D3D3C7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = com.dhccnurse.cyf;
 				TargetAttributes = {

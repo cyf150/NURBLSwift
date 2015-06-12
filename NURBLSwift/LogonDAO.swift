@@ -18,7 +18,7 @@ class LogonDAO: NSObject {
         
         for i in 1...100
         {
-            var bed =  BedModel()
+            let bed =  BedModel()
             bed.PatName = "张三\(i)"
             if i%2 == 0
             {

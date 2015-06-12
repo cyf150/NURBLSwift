@@ -49,21 +49,15 @@ code_sign() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'AFNetworking.framework'
-  install_framework 'Alamofire.framework'
-  install_framework 'MBProgressHUD.framework'
   install_framework 'MJExtension.framework'
   install_framework 'MJRefresh.framework'
   install_framework 'RDVTabBarController.framework'
   install_framework 'SDWebImage.framework'
-  install_framework 'SnapKit.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'AFNetworking.framework'
-  install_framework 'Alamofire.framework'
-  install_framework 'MBProgressHUD.framework'
   install_framework 'MJExtension.framework'
   install_framework 'MJRefresh.framework'
   install_framework 'RDVTabBarController.framework'
   install_framework 'SDWebImage.framework'
-  install_framework 'SnapKit.framework'
 fi
